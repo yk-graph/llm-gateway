@@ -1,3 +1,35 @@
+# === Dependencies ===
 node_modules/
+
+# === Build output ===
 dist/
+*.tsbuildinfo
+
+# === Environment variables (secrets, kept only on Mini) ===
 .env
+.env.*
+!.env.example
+
+# === Data (kept only on Mini, backed up, never in Git) ===
+data/
+
+# === Logs ===
+*.log
+logs/
+npm-debug.log*
+pnpm-debug.log*
+
+# === OS ===
+.DS_Store
+Thumbs.db
+
+# === Editor ===
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+
+# === Misc cache ===
+*.pid
+.cache/
+coverage/

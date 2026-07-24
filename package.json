@@ -1,23 +1,27 @@
 {
   "name": "llm-gateway",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.1.0",
+  "description": "Express gateway that feeds Markdown docs and prompts to a local LLM (Ollama) and returns answers",
+  "type": "module",
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "volta": {
+    "node": "24.15.0"
+  },
+  "packageManager": "pnpm@10.20.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yk-graph/llm-gateway.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/yk-graph/llm-gateway/issues"
-  },
-  "homepage": "https://github.com/yk-graph/llm-gateway#readme",
+  "license": "MIT",
   "dependencies": {
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
@@ -25,7 +29,7 @@
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
-    "@types/node": "^26.1.1",
+    "@types/node": "^24.10.0",
     "tsx": "^4.23.1",
     "typescript": "^7.0.2"
   }
