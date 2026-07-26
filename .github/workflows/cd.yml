@@ -1,0 +1,25 @@
+name: CD
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to Mac mini
+    runs-on: [self-hosted, macOS, ARM64, llm-gateway]
+
+    steps:
+      - name: Deploy
+        run: |
+          cd ~/server/srv/llm-gateway
+          git fetch origin
+          git switch main
+          git pull origin main
+          pnpm install --frozen-lockfile
+          pnpm build
+          launchctl kickstart -k gui/$(id -u)/com.llm-gateway
