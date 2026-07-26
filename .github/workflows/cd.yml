@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Deploy
         run: |
+          export VOLTA_HOME="$HOME/.volta"
+          export PATH="$VOLTA_HOME/bin:$PATH"
           cd ~/server/srv/llm-gateway
           git fetch origin
           git switch main
