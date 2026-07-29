@@ -6,9 +6,10 @@
     "node": ">=24.0.0"
   },
   "volta": {
-    "node": "24.15.0"
+    "node": "24.15.0",
+    "pnpm": "11.9.0"
   },
-  "packageManager": "pnpm@10.20.0",
+  "packageManager": "pnpm@11.9.0",
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
@@ -19,7 +20,7 @@
   },
   "devDependencies": {
     "turbo": "^2",
-    "typescript": "^6.0.3",
+    "typescript": "catalog:",
     "prettier": "^3.9.6",
     "eslint": "^10.8.0",
     "@eslint/js": "^10.0.1",
