@@ -5,6 +5,9 @@ node_modules/
 dist/
 *.tsbuildinfo
 
+# === Turborepo ===
+.turbo/
+
 # === Environment variables (secrets, kept only on Mini) ===
 .env
 .env.*
