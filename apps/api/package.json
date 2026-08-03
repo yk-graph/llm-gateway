@@ -12,6 +12,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@llm-gateway/db": "workspace:*",
+    "better-auth": "^1.6.25",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "zod": "catalog:"
