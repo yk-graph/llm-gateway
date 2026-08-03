@@ -7,7 +7,7 @@ settings:
 catalogs:
   default:
     '@types/node':
-      specifier: ^24.10.0
+      specifier: ^24.13.3
       version: 24.13.3
     typescript:
       specifier: ^6.0.3
@@ -84,6 +84,9 @@ importers:
         specifier: ^3.23.2
         version: 3.23.2(@types/node@24.13.3)
     devDependencies:
+      '@types/node':
+        specifier: 'catalog:'
+        version: 24.13.3
       drizzle-kit:
         specifier: ^0.31.10
         version: 0.31.10
