@@ -9,6 +9,9 @@ catalogs:
     '@types/node':
       specifier: ^24.13.3
       version: 24.13.3
+    dotenv:
+      specifier: ^17.4.2
+      version: 17.4.2
     typescript:
       specifier: ^6.0.3
       version: 6.0.3
@@ -54,7 +57,7 @@ importers:
         specifier: ^1.6.25
         version: 1.6.25(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(kysely@0.29.4)(mysql2@3.23.2(@types/node@24.13.3)))(mysql2@3.23.2(@types/node@24.13.3))
       dotenv:
-        specifier: ^17.4.2
+        specifier: 'catalog:'
         version: 17.4.2
       express:
         specifier: ^5.2.1
@@ -87,6 +90,9 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 24.13.3
+      dotenv:
+        specifier: 'catalog:'
+        version: 17.4.2
       drizzle-kit:
         specifier: ^0.31.10
         version: 0.31.10

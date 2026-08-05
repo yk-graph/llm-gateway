@@ -14,7 +14,7 @@
   "dependencies": {
     "@llm-gateway/db": "workspace:*",
     "better-auth": "^1.6.25",
-    "dotenv": "^17.4.2",
+    "dotenv": "catalog:",
     "express": "^5.2.1",
     "zod": "catalog:"
   },
