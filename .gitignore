@@ -8,6 +8,9 @@ dist/
 # === Turborepo ===
 .turbo/
 
+# === Local test artifacts ===
+cookie*.txt
+
 # === Environment variables (secrets, kept only on Mini) ===
 .env
 .env.*
