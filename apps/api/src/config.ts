@@ -1,8 +1,10 @@
-import 'dotenv/config'
+import { config as loadEnv } from 'dotenv'
 import path from 'node:path'
 
+loadEnv({ path: '../../.env' })
+
 export const config = {
-  port: Number(process.env.PORT ?? 8787),
+  port: Number(process.env.PORT ?? 4110),
 
   ollamaUrl: process.env.OLLAMA_URL ?? 'http://localhost:11434/v1',
   model: process.env.MODEL ?? 'gemma4:12b',
