@@ -12,6 +12,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@llm-gateway/core": "workspace:*",
     "@llm-gateway/db": "workspace:*",
     "better-auth": "^1.6.25",
     "dotenv": "catalog:",
