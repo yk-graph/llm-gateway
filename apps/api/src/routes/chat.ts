@@ -17,7 +17,7 @@ chatRouter.get('/prompts', async (_req: Request, res: Response) => {
   res.json({ prompts: await listPrompts() })
 })
 
-chatRouter.post('/chat', async (req: Request, res: Response) => {
+chatRouter.post('/', async (req: Request, res: Response) => {
   const parsed = ChatBody.safeParse(req.body)
   if (!parsed.success) {
     res.status(400).json({ error: parsed.error.issues })
@@ -26,16 +26,13 @@ chatRouter.post('/chat', async (req: Request, res: Response) => {
   const { question, prompt } = parsed.data
 
   try {
-    // 1) load documents  2) select prompt
     const [docs, systemPrompt] = await Promise.all([loadAllDocs(), loadPrompt(prompt)])
 
-    // 3) assemble (prompt = system, docs + question = user)
     const userContent =
       `Answer the question based on the following documents.\n\n` +
       `==== Documents ====\n${docs}\n\n` +
       `==== Question ====\n${question}`
 
-    // 4) send to Ollama  5) return
     const { answer } = await askOllama(systemPrompt, userContent)
     res.json({ answer })
   } catch (err) {
