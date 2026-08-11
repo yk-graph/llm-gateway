@@ -3,7 +3,7 @@ import { toNodeHandler } from 'better-auth/node'
 
 import { config } from './config.js'
 import { auth } from './auth.js'
-import { chatRouter } from './routes/chat.js'
+import { apiRouter } from './routes/index.js'
 
 const app = express()
 
@@ -17,7 +17,7 @@ app.get('/health', (_req, res) => {
   res.json({ ok: true, model: config.model })
 })
 
-app.use('/api', chatRouter)
+app.use('/api/v1', apiRouter)
 
 app.listen(config.port, () => {
   console.log(`llm-gateway listening on http://localhost:${config.port}`)
