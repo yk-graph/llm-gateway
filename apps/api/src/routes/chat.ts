@@ -20,8 +20,6 @@ chatRouter.post('/', async (req: Request, res: Response) => {
     return
   }
 
-  const { question } = parsed.data
-
   const userId = req.userId
   if (!userId) {
     res.status(401).json({ error: 'unauthorized' })
