@@ -7,5 +7,14 @@
   "scripts": {
     "lint": "eslint .",
     "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.45.2",
+    "mysql2": "^3.23.2"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "dotenv": "catalog:",
+    "drizzle-kit": "^0.31.10"
   }
 }
