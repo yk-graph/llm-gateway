@@ -1,10 +1,12 @@
 import { Router } from 'express'
 
-import { apiKeyAuth } from '../middleware/api-key-auth.js'
+import { apiKeyAuth, sessionAuth } from '../middleware/index.js'
 import { chatRouter } from './chat.js'
+import { documentsRouter } from './documents.js'
 import { keysRouter } from './keys.js'
 
 export const apiRouter = Router()
 
 apiRouter.use('/chat', apiKeyAuth, chatRouter)
-apiRouter.use('/keys', keysRouter)
+apiRouter.use('/documents', sessionAuth, documentsRouter)
+apiRouter.use('/keys', sessionAuth, keysRouter)
