@@ -8,6 +8,13 @@ export type ApiKeyRecord = {
   userId: string
 }
 
+export type ApiKeySummary = {
+  id: string
+  name: string
+  expiresAt: Date
+  createdAt: Date
+}
+
 export async function findValidApiKeyByHash(tokenHash: string): Promise<ApiKeyRecord | null> {
   const rows = await db
     .select({
@@ -15,8 +22,24 @@ export async function findValidApiKeyByHash(tokenHash: string): Promise<ApiKeyRe
       userId: apiKeys.userId,
     })
     .from(apiKeys)
-    .where(and(eq(apiKeys.tokenHash, tokenHash), eq(apiKeys.revoked, false), gt(apiKeys.expiresAt, new Date())))
+    .where(and(eq(apiKeys.tokenHash, tokenHash), gt(apiKeys.expiresAt, new Date())))
     .limit(1)
 
   return rows[0] ?? null
+}
+
+export async function listApiKeysByUserId(userId: string): Promise<ApiKeySummary[]> {
+  return db
+    .select({
+      id: apiKeys.id,
+      name: apiKeys.name,
+      expiresAt: apiKeys.expiresAt,
+      createdAt: apiKeys.createdAt,
+    })
+    .from(apiKeys)
+    .where(eq(apiKeys.userId, userId))
+}
+
+export async function deleteApiKey(id: string, keyId: string): Promise<void> {
+  await db.delete(apiKeys).where(and(eq(apiKeys.userId, id), eq(apiKeys.id, keyId)))
 }

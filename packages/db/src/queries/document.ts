@@ -42,3 +42,7 @@ export async function upsertDocumentByUserId(userId: string, title: string, cont
     })
   }
 }
+
+export async function deleteDocumentByUserId(userId: string): Promise<void> {
+  await db.delete(documents).where(eq(documents.userId, userId))
+}
