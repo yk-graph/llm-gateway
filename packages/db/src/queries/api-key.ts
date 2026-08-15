@@ -40,6 +40,6 @@ export async function listApiKeysByUserId(userId: string): Promise<ApiKeySummary
     .where(eq(apiKeys.userId, userId))
 }
 
-export async function deleteApiKey(id: string, keyId: string): Promise<void> {
-  await db.delete(apiKeys).where(and(eq(apiKeys.userId, id), eq(apiKeys.id, keyId)))
+export async function deleteApiKey(userId: string, keyId: string): Promise<void> {
+  await db.delete(apiKeys).where(and(eq(apiKeys.userId, userId), eq(apiKeys.id, keyId)))
 }

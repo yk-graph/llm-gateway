@@ -1,7 +1,7 @@
 import { Router, type Request, type Response } from 'express'
 import { z } from 'zod'
 
-import { findDocumentByUserId, upsertDocumentByUserId } from '@llm-gateway/db'
+import { deleteDocumentByUserId, findDocumentByUserId, upsertDocumentByUserId } from '@llm-gateway/db'
 
 export const documentsRouter = Router()
 
@@ -20,6 +20,12 @@ documentsRouter.post('/', async (req: Request, res: Response) => {
   }
 
   await upsertDocumentByUserId(userId, parsed.data.title, parsed.data.content)
+  res.status(200).json({ ok: true })
+})
+
+documentsRouter.delete('/', async (req: Request, res: Response) => {
+  const userId = req.userId as string
+  await deleteDocumentByUserId(userId)
   res.status(200).json({ ok: true })
 })
 
