@@ -22,3 +22,23 @@ export async function findDocumentByUserId(userId: string): Promise<DocumentReco
 
   return rows[0] ?? null
 }
+
+export async function upsertDocumentByUserId(userId: string, title: string, content: string): Promise<void> {
+  const existingDocument = await findDocumentByUserId(userId)
+
+  if (existingDocument) {
+    await db
+      .update(documents)
+      .set({
+        title,
+        content,
+      })
+      .where(eq(documents.userId, userId))
+  } else {
+    await db.insert(documents).values({
+      userId,
+      title,
+      content,
+    })
+  }
+}
